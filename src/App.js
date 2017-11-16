@@ -14,9 +14,15 @@ class App extends Component {
   componentDidMount() {
     loadEvents().then(events => {
       const eventWithDuration = events.map((event, index) => {
-        if (events[index+1]) {
-          event.duration =  event.start - events[index + 1].start
-          return event
+        const preEvent = events[index+1];
+        if (preEvent) {
+          const preEventT = new Date(preEvent.start);
+          const eventT = new Date(event.start);
+          if (preEventT.getDate() === eventT.getDate()) {
+            event.duration = event.start - events[index + 1].start
+            return event;
+          }
+          return event;
         }
         return event;
       })
