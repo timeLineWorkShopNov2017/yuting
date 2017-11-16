@@ -1,9 +1,12 @@
 .eventPoint {
   position: absolute;
-  top: 20vh;
-  height: 5vh;
-  width: 10vw;
-  word-wrap:keep-all;
-  border-radius: 5vh;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
   background: rgba(0, 0, 0, 0.2);
+  opacity: 0.3;
+}
+
+.eventLabel {
+  margin-top: -40px;
 }

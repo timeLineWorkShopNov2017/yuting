@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080/api/data/events'
+const url = 'http://localhost:8080/api/data/events?includePlainTextContent=true'
 
 const username = 'chen';
 const password = '12345';
