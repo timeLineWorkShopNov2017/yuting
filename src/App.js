@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { loadEvents } from './lib/loadEvents.js';
 import Event from './Event';
+import TimeStamp from './TimeStamp';
 
 class App extends Component {
   constructor() {
@@ -12,7 +13,14 @@ class App extends Component {
   }
   componentDidMount() {
     loadEvents().then(events => {
-      this.setState({ events })
+      const eventWithDuration = events.map((event, index) => {
+        if (events[index+1]) {
+          event.duration =  event.start - events[index + 1].start
+          return event
+        }
+        return event;
+      })
+      this.setState({ events: eventWithDuration })
     })
   }
   render() {
@@ -24,6 +32,11 @@ class App extends Component {
               <Event event={event} key={event.id}/>
             )
           })}
+          <TimeStamp
+            from={new Date('2017-01-01')}
+            to={new Date('2017-01-02')}
+            numberOfTimeMarks={24}
+          />
         </div>
       </div>
     );

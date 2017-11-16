@@ -1,28 +1,22 @@
 import React from 'react';
 import './style.css';
 import { getTimeInPercentage } from '../lib/getTimeInPercentage.js';
-import { getRandomInt } from '../lib/getRandomInt.js';
-import { getFrequentWords } from '../lib/nlpHelpers.js';
-
-const colors = ['red', 'green', 'blue', 'yello'];
 
 const Event = (props) => {
-  const size = getRandomInt(1, 100);
+  const size = props.event.duration / 30000;
+  const t = new Date(props.event.start);
+  const dateOfMonth = t.getDate()
   return (
     <div
       className="eventPoint"
       style={{
         left: `${getTimeInPercentage(props.event.start)}%`,
-        background: `${colors[getRandomInt(0, 3)]}`,
-        top: `${getTimeInPercentage(props.event.start)}%`,
         width: `${size}px`,
         height: `${size}px`,
         borderRadius: `${size}px`,
+        top: `${dateOfMonth * 5}px`
       }}
     >
-      <div className="eventLabel">
-        {getFrequentWords(props.event.targettedResource.plainTextContent, 1)}
-      </div>
     </div>
   )
 }
