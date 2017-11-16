@@ -1,10 +1,10 @@
 .eventPoint {
   position: absolute;
+  top: 200px;
   height: 20px;
   width: 20px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  filter:blur(1px);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .eventLabel {
